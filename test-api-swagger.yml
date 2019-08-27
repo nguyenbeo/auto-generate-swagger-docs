@@ -1,0 +1,49 @@
+---
+swagger: "2.0"
+info:
+  description: "The API to test the swagger generator from Spring Boot"
+  version: "1.0.0"
+  title: "MiKKa Test API"
+  contact:
+    name: "MiKKa"
+    url: "http://mikka.se"
+    email: "whoever@gmail.com"
+  license:
+    name: "proprietary"
+host: "api.mikka.se"
+basePath: "/"
+tags:
+- name: "Test API"
+  description: "Test Controller"
+paths:
+  /v1/tests/{testId}:
+    get:
+      tags:
+      - "Test API"
+      summary: "Get a specific test Id"
+      operationId: "getTest"
+      produces:
+      - "*/*"
+      parameters:
+      - name: "testId"
+        in: "path"
+        description: "testId"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/TestData"
+        405:
+          description: "Method not allowed"
+      deprecated: false
+definitions:
+  TestData:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+    title: "TestData"
